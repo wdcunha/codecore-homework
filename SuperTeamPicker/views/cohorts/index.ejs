@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<h1>Notes List</h1>
+
+<div class="posts-list">
+  <% for (let post of posts) { %>
+    <div>
+      <a href="/posts/<%= post.id %>"><h4><%= post.username %></h4></a>
+      <hr />
+    </div>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>
