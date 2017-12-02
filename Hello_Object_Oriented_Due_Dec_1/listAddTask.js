@@ -20,16 +20,6 @@ class List {
   }
 }
 
-const toDoList = new List('To Do');
-
-// adds 'Laundry' task to 'To Do' list
-toDoList.addTask(new Task('Laundry', 'You'));
-// also works by chaining
-toDoList
-  .addTask(new Task('Buy Apples'))
-  .addTask(new Task('Pay Phone Bill', 'Me'));
-
-console.log(toDoList);
 
 
 
@@ -52,3 +42,16 @@ class Task {
     }
   }
 }
+
+
+
+const toDoList = new List('To Do');
+
+// adds 'Laundry' task to 'To Do' list
+toDoList.addTask(new Task('Laundry', 'You'));
+// also works by chaining
+toDoList
+.addTask(new Task('Buy Apples'))
+.addTask(new Task('Pay Phone Bill', 'Me'));
+
+console.log(toDoList);

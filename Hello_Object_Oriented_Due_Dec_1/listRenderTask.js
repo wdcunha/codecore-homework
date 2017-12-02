@@ -66,7 +66,7 @@ class List {
     return result;
     // console.log(this);
   }
-  this.lists[i].map { |x| x.taskName}.join(...)
+  // this.lists[i].map { |x| x.taskName}.join(...)
 
 }
 

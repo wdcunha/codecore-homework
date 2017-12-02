@@ -107,19 +107,14 @@ class Board {
     for (var i = 0; i < this.listBoard.length; i++) {
 
       if (this.listBoard[i].listName === listFrom) {
-        console.log(this.listBoard[i].listName);
-        console.log(`if1 >>>>>${i}<<<<<<`);
 
         for (let j in this.listBoard[i].lists){
 
           if (this.listBoard[i].lists[j].taskName === task) {
-            console.log(`if2 >>>>>${j}<<<<<<`);
             acc = this.listBoard[i].lists.splice(j,1).pop();
 
             for (var x = 0; x< this.listBoard.length; x++) {
-              console.log(`x>>  ${this.listBoard[x].listName}`);
               if (this.listBoard[x].listName === listTo) {
-                console.log(this.listBoard[x].listName);
                 this.listBoard[x].lists.push(acc);
                 return this;
               }
@@ -155,7 +150,6 @@ const myBoard = new Board('My Board')
   .addList(toDoList)
   .addList(doingList)
   .addList(doneList);
-  console.log(myBoard.renderBoard());
 
   // console.dir(myBoard,{depth:null})
   // Using the same myBoard declared above
