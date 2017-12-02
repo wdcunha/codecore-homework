@@ -11,19 +11,19 @@
 // myTaskWithAssignee.render() // returns 'Wash clothes • You'
 
 class Task {
-  constructor(assignee='', fullName='') {
+  constructor(taskName='', assignee='') {
+    this.taskName = taskName;
     this.assignee = assignee;
-    this.fullName = fullName;
   }
 
   render() {
-    if (this.assignee != '' && this.fullName != '') {
+    if (this.assignee != '' && this.taskName != '') {
 
-      return `${this.assignee} ${this.fullName}`;
+      return `${this.taskName} ${this.assignee}`;
     }
-    else if (this.assignee != '') {
+    else if (this.taskName != '') {
 
-      return `${this.assignee}`;
+      return `${this.taskName}`;
     } else {
       return '';
     }
@@ -34,5 +34,5 @@ myTask = new Task("Keep on studying");
 // myTask = new Task();
 console.log(myTask.render());
 
-myTaskWithAssignee = new Task("Sleep a little", "Wellington");
+myTaskWithAssignee = new Task("Wash clothes", "You");
 console.log(myTaskWithAssignee.render());
