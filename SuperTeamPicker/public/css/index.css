@@ -1,13 +1,19 @@
-.navbar{
+nav {
   padding:0 0 0 0;
 }
 
-main {
-  padding-left: 0;
+.last-link {
   padding-right: 0;
 }
+
+
+.button-cohorts {
+    padding-top: 20px;
+}
+
 .img-url {
-  width: 20vmin;
+  width: 7vmin;
+  height: 7vmin;
   /*width: 300px;*/
   /*height: 300px;*/
 }

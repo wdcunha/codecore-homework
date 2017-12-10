@@ -28,14 +28,14 @@ router.get('/:id', (request, response) => {
 
 // PATH: /cohorts VERB: POST Creating new cohorts
 router.post('/', upload.single('picture'), (request, response) => {
-  const cohort = request.body.cohort;
+  const name = request.body.name;
   const members = request.body.members;
 
   const filename = request.file.filename;
   const logo_url = path.join(UPLOADS_DIR, filename);
 
   knex
-    .insert({cohort, members, logo_url})
+    .insert({name, members, logo_url})
     .into('cohorts')
     .returning('id')
     .then(result => response.redirect('/cohorts'))
