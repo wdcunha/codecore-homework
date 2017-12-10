@@ -1,13 +1,29 @@
 <%- include('../partials/header') %>
 
-<h1>Notes List</h1>
 
-<div class="posts-list">
-  <% for (let post of posts) { %>
-    <div>
-      <a href="/posts/<%= post.id %>"><h4><%= post.username %></h4></a>
-      <hr />
+<div class="cohort-list">
+
+  <% for (let cohort of cohorts) { %>
+
+    <div class="container">
+      <div class="card w-100">
+        <div class="card-body">
+          <div class="row">
+            <% if (cohort.logo_url) { %>
+              <img src="<%= cohort.logo_url %>"
+                class="rounded img-url">
+            <% }  %>
+            <a class="card-title" href="/cohorts/<%= cohort.id %>"><%= cohort.name %></a>
+            <a class="card-text" href="/cohorts/<%= cohort.id %>">
+                <%= cohort.members %></a>
+          <div class="row">
+            <br>
+          </div>
+        </div>
+      </div>
     </div>
+    <hr class="card-text">
+  </div>
   <% } %>
 </div>
 

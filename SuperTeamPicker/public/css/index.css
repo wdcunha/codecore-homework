@@ -1,0 +1,22 @@
+.navbar{
+  padding:0 0 0 0;
+}
+
+main {
+  padding-left: 0;
+  padding-right: 0;
+}
+.img-url {
+  width: 20vmin;
+  /*width: 300px;*/
+  /*height: 300px;*/
+}
+
+input.btn {
+  margin-top: 20px;
+}
+
+footer {
+  padding-left: 0;
+  padding-top: 50px;
+}

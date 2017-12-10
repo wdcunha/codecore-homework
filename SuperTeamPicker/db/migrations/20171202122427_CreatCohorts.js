@@ -2,9 +2,9 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('cohorts', table => {
     table.increments('id');
-    table.string('cohort');
+    table.string('name');
     table.text('members');
-    table.string('picture_path');
+    table.string('logo_url');
     table.timestamps(false, true);
   });
 };

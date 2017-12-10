@@ -18,14 +18,14 @@ module.exports = {
   staging: {
     ...sharedConfig,
     connection: {
-      database: 'team_peacker_dev'
+      database: 'team_peacker_stag'
     },
   },
 
   production: {
     ...sharedConfig,
     connection: {
-      database: 'team_peacker_dev'
+      database: 'team_peacker_prod'
     },
   }
 };

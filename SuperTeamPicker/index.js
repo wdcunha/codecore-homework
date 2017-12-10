@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -5,13 +6,16 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.set('view engine', 'ejs');
-
 app.use(morgan('dev'));
-
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/home', (request, response) => {
   response.render('home');
+});
+
+app.get('/', (request, response) => {
+  response.redirect('home');
 });
 
 app.get('/contact_us', (request, response) => {
@@ -26,8 +30,7 @@ app.post('/contact_us', (request, response) => {
   response.render('thankYou', {fullName: fullName, message: message});
 });
 
-const teamsRouter = require('./routes/teams');
-
+const teamsRouter = require('./routes/cohorts');
 app.use('/cohorts', teamsRouter);
 
 var time = new Date();
@@ -35,7 +38,7 @@ var time = new Date();
 const DOMAIN = 'localhost';
 const PORT = '7000';
 app.listen(PORT, DOMAIN, () => {
-console.log(`Updated at: ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()} ---» Server 'Team Picker' listenning on http://${DOMAIN}:${PORT}`);
+console.log(`💻 Updated at: ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()} ---» Server 'Team Picker' listenning on http://${DOMAIN}:${PORT}`);
 });
 
 

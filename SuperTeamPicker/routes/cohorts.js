@@ -1,14 +1,19 @@
+const path = require('path');
+const multer = require('multer');
 const express = require('express');
 const router = express.Router();
 const knex = require('../db');
 
-// PATH: /posts/new VERB: GET Serves form for creating posts
+const UPLOADS_DIR = 'uploads';
+const upload = multer({dest: path.join(__dirname, '..', 'public', UPLOADS_DIR)});
+
+// PATH: /cohorts/new VERB: GET Serves form for creating cohorts
 router.get('/new', (request, response) => {
   // response.send('TEST POSTS NEW')
   response.render('cohorts/new');
 });
 
-// localhost:3002/posts/:id
+// localhost:3002/cohorts/:id
 router.get('/:id', (request, response) => {
   const id = request.params.id;
   knex
@@ -21,20 +26,23 @@ router.get('/:id', (request, response) => {
     .catch(error => response.send(error));
 });
 
-// PATH: /posts VERB: POST Creating new posts
-router.post('/', (request, response) => {
+// PATH: /cohorts VERB: POST Creating new cohorts
+router.post('/', upload.single('picture'), (request, response) => {
   const cohort = request.body.cohort;
   const members = request.body.members;
 
+  const filename = request.file.filename;
+  const logo_url = path.join(UPLOADS_DIR, filename);
+
   knex
-    .insert({cohort, members})
+    .insert({cohort, members, logo_url})
     .into('cohorts')
     .returning('id')
     .then(result => response.redirect('/cohorts'))
     .catch(error => response.send(error));
 });
 
-// PATH: /posts VERB: GET List all the posts
+// PATH: /cohorts VERB: GET List all the cohorts
 router.get('/', (request, response) => {
   knex
     .select()
