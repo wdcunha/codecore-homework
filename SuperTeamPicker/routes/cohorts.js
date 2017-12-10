@@ -13,15 +13,15 @@ router.get('/new', (request, response) => {
   response.render('cohorts/new');
 });
 
-// localhost:3002/cohorts/:id
+// localhost:7000/cohorts/:id
 router.get('/:id', (request, response) => {
   const id = request.params.id;
   knex
     .first()
     .from('cohorts')
     .where({id})  //{id} === {id: id}
-    .then(post => {
-      response.render('cohorts/show',{post});
+    .then(member => {
+      response.render('cohorts/show',{member});
     })
     .catch(error => response.send(error));
 });

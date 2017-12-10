@@ -1,13 +1,41 @@
 <%- include('../partials/header') %>
 
-<h2><%= post.username %></h2>
-<p>
-  <%= post.title %>
-</p>
+<div class="card w-100">
+  <div class="card-body">
+    <h4 class="card-title"><%= member.name %></h4>
+    <p class="card-text"><%= member.members %></p>
 
-<p>
-  <%= post.notes %>
-</p>
-<p><strong>Created at:</strong> <%= post.created_at %></p>
+    <hr>
+
+    <div class="custom-controls-stacked">
+      <label for="radio-stacked">Method</label>
+      <label class="custom-control custom-radio">
+        <input id="method1" name="radio-stacked" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Team Count</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input id="method2" name="radio-stacked" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Number Per Team</span>
+      </label>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="text" name="quantity" class="form-control" placeholder="Specify the amount of members">
+    </div>
+
+    <div class="form-group">
+      <a class="btn btn-outline-primary w-100" type="text" href="/member/<%= member.id %>" role="button">Assign Teams</a>
+    </div>
+
+
+  </div>
+</div>
+
+
 
 <%- include('../partials/footer') %>
