@@ -6,16 +6,17 @@
     <p class="card-text"><%= member.members %></p>
 
     <hr>
+<form>
 
     <div class="custom-controls-stacked">
-      <label for="radio-stacked">Method</label>
+      <label for="method">Method</label>
       <label class="custom-control custom-radio">
-        <input id="method1" name="radio-stacked" type="radio" class="custom-control-input">
+        <input id="method1" name="method" type="radio" class="custom-control-input" value="teamCount">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Team Count</span>
       </label>
       <label class="custom-control custom-radio">
-        <input id="method2" name="radio-stacked" type="radio" class="custom-control-input">
+        <input id="method2" name="method" type="radio" class="custom-control-input" value="numberPerTeam">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Number Per Team</span>
       </label>
@@ -27,11 +28,19 @@
       <label for="quantity">Quantity</label>
       <input type="text" name="quantity" class="form-control" placeholder="Specify the amount of members">
     </div>
+<input type="hidden" name="members" value="<%= member.members %>" >
+      <button class="btn btn-outline-primary w-100" type="submit">Assign Teams</button>
 
-    <div class="form-group">
-      <a class="btn btn-outline-primary w-100" type="text" href="/member/<%= member.id %>" role="button">Assign Teams</a>
-    </div>
+</form>
 
+<% if (arrays !== null) {
+    for (var property in arrays) {
+      if (arrays.hasOwnProperty(property)) {
+        var str = property + ": " + arrays[property].join(", "); %>
+        <h3><%= str %></h3>
+<%    }
+    }
+  } %>
 
   </div>
 </div>
