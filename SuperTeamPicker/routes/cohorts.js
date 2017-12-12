@@ -17,7 +17,6 @@ router.get('/new', (request, response) => {
 router.get('/:id', (request, response) => {
   const id = request.params.id;
   const members = request.query.members;
-  // const namesArr = members.replace(/\s+/gi, '').split(',');
   const method = request.query.method;
   const quantity = request.query.quantity;
 
@@ -29,6 +28,7 @@ router.get('/:id', (request, response) => {
           array[i] = array[j];
           array[j] = temp;
       }
+
       return array;
   }
 
@@ -46,16 +46,27 @@ router.get('/:id', (request, response) => {
       }
       return ret;
   }
+
+  function numberPerTeam(arr, n){
+    let input = [];
+    while (arr.length > 0) {
+      input.push(arr.splice(0, n));
+    };
+    if ((input[input.length - 2].length - input[input.length - 1].length) > 1){
+      input[0].push(input.pop().join(", "));
+    }
+    return input;
+  }
+
   let arrays = null;
-if (method === 'teamCount') {
+if (method === 'teamCount' && quantity !== '') {
   let newarray =(shuffleArray(members.replace(/\s+/gi, '').split(',')));
   arrays = distributePlayers(newarray, quantity);
-} else if (method === 'numberPerTeam') {
+} else if (method === 'numberPerTeam' && quantity !== '') {
   let newarray =(shuffleArray(members.replace(/\s+/gi, '').split(',')));
-  arrays = distributePlayers(newarray, quantity);
+  arrays = numberPerTeam(newarray, quantity);
 }
 
-  // console.log(arrays);
 
   knex
     .first()

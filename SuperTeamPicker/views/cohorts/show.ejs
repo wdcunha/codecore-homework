@@ -33,14 +33,17 @@
 
 </form>
 
-<% if (arrays !== null) {
-    for (var property in arrays) {
-      if (arrays.hasOwnProperty(property)) {
-        var str = property + ": " + arrays[property].join(", "); %>
-        <h3><%= str %></h3>
-<%    }
-    }
-  } %>
+<br>
+
+
+  <% if (arrays !== null) {
+      for (var property in arrays) {
+        if (arrays.hasOwnProperty(property)) {
+          var str = property + ": " + arrays[property].join(", "); %>
+          <h3><%= str %></h3>
+  <%    }
+      }
+    } %>
 
   </div>
 </div>
