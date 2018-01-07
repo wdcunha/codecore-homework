@@ -19,6 +19,21 @@ h1 {
   justify-content: center;
 }
 
+.letter.selected{
+  background-color: red;
+  border-color: white;
+  color: white;
+}
+
+.wrapper2 {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px 40px 40px;
+  grid-template-rows: 30px;
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  justify-content: center;
+}
 
 .letter {
   border: solid 1px;
@@ -36,27 +51,15 @@ h1 {
   transition: all .3s ease;
 }
 
-.letter.selected{
-  background-color: red;
-  border-color: white;
-  color: white;
-}
-
-.wrapper2 {
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: 40px 40px 40px 40px 40px 40px;
-  grid-template-rows: 30px;
-  grid-column-gap: 10px;
-  grid-row-gap: 20px;
-  justify-content: center;
-
-}
-
 .space {
   border-bottom: solid 3px;
-  border-color: grey;
+  border-color: black;
+  padding-bottom: 7px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial;
+  font-size: 30px;
+
 
 }

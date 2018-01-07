@@ -17,5 +17,9 @@ function chooseWord () {
 }
 
 $('.letter').on('click', e => {
-  $(e.currentTarget).addClass('selected');
+  for(let i = 0; i < $('.space').length; i++){
+    $(e.currentTarget).addClass('selected');
+    $(".space").eq(i).html(e.currentTarget.innerHTML);
+  }
+  console.log("it's over");
 });
