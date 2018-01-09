@@ -12,7 +12,7 @@ h1 {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px;
   grid-template-rows: 30px 30px 30px;
   grid-column-gap: 10px;
   grid-row-gap: 20px;
@@ -27,11 +27,7 @@ h1 {
 
 .wrapper2 {
   margin-top: 60px;
-  display: grid;
-  grid-template-columns: 40px 40px 40px 40px 40px 40px;
-  grid-template-rows: 30px;
-  grid-column-gap: 10px;
-  grid-row-gap: 20px;
+  display: flex;
   justify-content: center;
 }
 
@@ -52,12 +48,13 @@ h1 {
 }
 
 .space {
+  margin-right: 10px;
   border-bottom: solid 3px;
   border-color: black;
-  padding-bottom: 7px;
+  padding-bottom: 1px;
+  width: 25px;
   display: flex;
   justify-content: center;
-  align-items: center;
   font-family: Arial;
   font-size: 30px;
 
