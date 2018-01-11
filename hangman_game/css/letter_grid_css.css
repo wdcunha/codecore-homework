@@ -1,13 +1,19 @@
 body,html {
   padding: 0;
   margin: 0;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 
 h1 {
   text-align: center;
-  padding-bottom: 50px;
-  font-weight: 900;
+  padding-bottom: 30px;
+  font-sie: 1.75rem;
+
+}
+
+main{
+  /* display: flex; */
+  height: 85vmin;
 }
 
 .wrapper {
@@ -17,6 +23,7 @@ h1 {
   grid-column-gap: 10px;
   grid-row-gap: 20px;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .letter.selected{
@@ -25,8 +32,11 @@ h1 {
   color: white;
 }
 
+.letter.selected.green{
+  background-color: green;
+}
+
 .wrapper2 {
-  margin-top: 60px;
   display: flex;
   justify-content: center;
 }
@@ -48,15 +58,22 @@ h1 {
 }
 
 .space {
+  height: 45px;
   margin-right: 10px;
   border-bottom: solid 3px;
   border-color: black;
-  padding-bottom: 1px;
   width: 25px;
   display: flex;
   justify-content: center;
   font-family: Arial;
   font-size: 30px;
+}
 
+aside {
+  width: 50%;
+  text-align: center;
+}
 
+.gallow_img{
+  max-height:75vh;
 }
