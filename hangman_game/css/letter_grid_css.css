@@ -6,10 +6,16 @@ body,html {
 
 h1 {
   text-align: center;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
   font-sie: 1.75rem;
-
 }
+
+.message{
+  height: 30px;
+  text-align: center;
+  color: blue;
+}
+
 
 main{
   /* display: flex; */

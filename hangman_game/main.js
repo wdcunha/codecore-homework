@@ -9,12 +9,14 @@ function chooseWord () {
     return randomItem;
 }
 
+const vicSound = () => new Audio(`sounds/fanfare3.wav`)
 let word = chooseWord(); // pick up an the mystery word from the array
 let count = 0; // stores number that is select a letter
-let nl = word.length; //number of letter
-let wrongs = 0; // number of negatives clicks
+let wl = word.length; //word length
+let wrongs = 0; // number of misses
+let rightLetter = 0; // number of hits
 
-for(let i = 0; i < nl; i++){ //creates places as many as the word's length
+for(let i = 0; i < wl; i++){ //creates places as many as the word's length
   $('.wrapper2').append(
     $(`
       <div class="space"></div>
@@ -23,31 +25,56 @@ for(let i = 0; i < nl; i++){ //creates places as many as the word's length
 }
 console.log(`Word: ${word}`); //############ remove at the end ##############
 
+$('.message p').append(`
+  <p class="parag">The Game just started!</p>
+`)
+
+setTimeout(function(){ $('p.parag').remove(); }, 5000);
+// setTimeout(function(){ $('p.parag').fadeOut('slow'); }, 1000);
+
 function checkLetter(letter,local) {
+  let hits = 0; //stores if there's hits
   for(var i = 0; i < word.length; i++){
     if(word[i].toUpperCase() == letter){
-      $(".space").eq(i).html(letter.toLowerCase()); //insert the letter(s) in the right place
-      $(local).addClass('green'); //changes the key color for green when got the right letter
-      console.log(local);//############ remove at the end ##############
+      $(".space").eq(i).html(letter.toLowerCase()); //insert the letter(s) in the rightLetter place
+      $(local).addClass('green'); //changes the key color for green when got the rightLetter letter
       console.log(`letter: ${letter}`);//############ remove at the end ##############
-    } else {
-      wrongs++;
-      console.log(wrongs);
-      $('.gallow_img').attr('src', `image/gallows${wrongs}.jpg`);
+      rightLetter++;
+      console.log(`rightLetter: ${rightLetter}`);//############ remove at the end ##############
+      hits++;
+      console.log(`hits: ${hits}`);//############ remove at the end ##############
     }
+  }
+
+  if(hits == 0) {
+    wrongs++;
+    console.log(`wrongs: ${wrongs}`);
+    $('.gallow_img').attr('src', `image/gallows${wrongs}.jpg`);
   }
 }
 
 $('.letter').on('click', e => {
-  if(count < nl){
+  if(wrongs < 6){
     $(e.currentTarget).addClass('selected');
-  	console.log(count);//############ remove at the end ##############
+  	console.log(`count: ${count}`);//############ remove at the end ##############
     checkLetter(e.currentTarget.innerHTML, e.currentTarget);
   	count++;
-  } else if (count = nl) {
-
+    if (rightLetter === wl) {
+      vicSound().play();
+      document.location.reload();
+      return alert("Congratulations! You Win!");
+    }
   } else {
-    console.log(word);//############ remove at the end ##############
-    alert("it's over!");
+    document.location.reload();
+    return alert("Better luck next time...");
   }
 });
+
+
+
+
+
+
+
+
+//
