@@ -15,6 +15,7 @@ let count = 0; // stores number that is select a letter
 let wl = word.length; //word length
 let wrongs = 0; // number of misses
 let rightLetter = 0; // number of hits
+let lettersTyped = []; //store letter typed to avoid counting too much
 
 for(let i = 0; i < wl; i++){ //creates places as many as the word's length
   $('.wrapper2').append(
@@ -23,53 +24,75 @@ for(let i = 0; i < wl; i++){ //creates places as many as the word's length
     `)
   )
 }
-console.log(`Word: ${word}`); //############ remove at the end ##############
 
 $('.message p').append(`
-  <p class="parag">The Game just started!</p>
+  <p class="parag">The Game has just started!</p>
 `)
 
 setTimeout(function(){ $('p.parag').remove(); }, 5000);
 // setTimeout(function(){ $('p.parag').fadeOut('slow'); }, 1000);
 
-function checkLetter(letter,local) {
-  let hits = 0; //stores if there's hits
-  for(var i = 0; i < word.length; i++){
-    if(word[i].toUpperCase() == letter){
-      $(".space").eq(i).html(letter.toLowerCase()); //insert the letter(s) in the rightLetter place
-      $(local).addClass('green'); //changes the key color for green when got the rightLetter letter
-      console.log(`letter: ${letter}`);//############ remove at the end ##############
-      rightLetter++;
-      console.log(`rightLetter: ${rightLetter}`);//############ remove at the end ##############
-      hits++;
-      console.log(`hits: ${hits}`);//############ remove at the end ##############
+function checkLetter(letter) {
+  letter = letter.toLowerCase();
+  let hits = 0; //stores if there's hits from the letter chosen
+  $(`#${letter}`).addClass('selected');
+  if (!lettersTyped.includes(letter)) {
+    for(var i = 0; i < word.length; i++){
+      if(word[i].toLowerCase() === letter){
+        $(".space").eq(i).html(letter.toLowerCase()); //insert the letter(s) in the rightLetter place
+        $(`#${letter.toLowerCase()}`).addClass('green'); //changes the key color for green when got the rightLetter letter
+        hits++;
+        rightLetter++;
+      }
     }
   }
 
-  if(hits == 0) {
+  if(hits == 0 && !lettersTyped.includes(letter)) {
+    console.log(lettersTyped);
     wrongs++;
     console.log(`wrongs: ${wrongs}`);
     $('.gallow_img').attr('src', `image/gallows${wrongs}.jpg`);
   }
+  lettersTyped.push(letter);
+}
+
+function checkWin() {
+
+  if (rightLetter === wl) {
+    console.log(`rightLetter: ${rightLetter}`);
+    vicSound().play();
+    document.location.reload();
+    return alert("Congratulations! You Win!");
+  }
+}
+
+function lose() {
+  document.location.reload();
+  return alert("Better luck next time...");
 }
 
 $('.letter').on('click', e => {
   if(wrongs < 6){
-    $(e.currentTarget).addClass('selected');
-  	console.log(`count: ${count}`);//############ remove at the end ##############
-    checkLetter(e.currentTarget.innerHTML, e.currentTarget);
+    checkLetter(e.currentTarget.innerHTML);
   	count++;
-    if (rightLetter === wl) {
-      vicSound().play();
-      document.location.reload();
-      return alert("Congratulations! You Win!");
-    }
+    checkWin();
   } else {
-    document.location.reload();
-    return alert("Better luck next time...");
+    lose();
   }
 });
 
+document.addEventListener('keydown', e => {
+  if(wrongs < 6){
+    if (e.keyCode >= 65 && e.keyCode <= 90) {
+      console.log(`e.key: ${e.key}`);
+      checkLetter(e.key);
+    }
+  	count++;
+    checkWin();
+  } else {
+    lose();
+  }
+});
 
 
 
