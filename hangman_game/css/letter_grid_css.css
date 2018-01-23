@@ -1,0 +1,86 @@
+body,html {
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+
+h1 {
+  font-family: "Comic Sans MS", "cursive", "sans-serif";
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.message{
+  height: 30px;
+  text-align: center;
+  color: blue;
+  font-size: 20px;
+  font-family: "Comic Sans MS", "cursive", "sans-serif";
+}
+
+
+main{
+  height: 85vmin;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-rows: 30px 30px 30px;
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.letter.selected{
+  background-color: red;
+  border-color: white;
+  color: white;
+}
+
+.letter.selected.green{
+  background-color: green;
+}
+
+.wrapper2 {
+  display: flex;
+  justify-content: center;
+}
+
+.letter {
+  border: solid 1px;
+  border-color: grey;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.space {
+  height: 45px;
+  margin-right: 10px;
+  border-bottom: solid 3px;
+  border-color: black;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  font-family: Arial;
+  font-size: 30px;
+}
+
+aside {
+  width: 50%;
+  text-align: center;
+}
+
+.gallow_img{
+  max-height:75vh;
+}
